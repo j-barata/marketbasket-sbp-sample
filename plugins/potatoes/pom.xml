@@ -22,11 +22,6 @@
             <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.laxture</groupId>
-            <artifactId>sbp-core</artifactId>
-            <version>${sbp.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github</groupId>
             <artifactId>market.basket.sbp.sample.api</artifactId>
             <version>${project.version}</version>
