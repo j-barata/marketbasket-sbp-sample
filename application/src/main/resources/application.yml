@@ -1,0 +1,6 @@
+spring:
+  sbp:
+    runtime-mode: development
+    enabled: true
+    classes-directories:
+      - "target/classes"
