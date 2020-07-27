@@ -21,6 +21,7 @@
  */
 package com.github.market.basket.sbp.sample.api;
 
-public interface IFruit {
-    String getName();
+import com.github.market.basket.sbp.sample.api.extension.PluginRegister;
+
+public interface IFruit extends PluginRegister {
 }

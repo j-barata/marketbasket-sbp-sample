@@ -19,14 +19,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.plugins.potatoes;
+package com.github.market.basket.sbp.sample.plugins.tomatoes;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.github.market.basket.sbp.sample.api.IFruit;
+import org.pf4j.Extension;
 
-@SpringBootApplication
-public class PotatoesPluginStarter {
-    public static void main(String[] args) {
-        SpringApplication.run(PotatoesPluginStarter.class, args);
+@Extension
+public class Tomatoes implements IFruit {
+
+    @Override
+    public String name() {
+        return "tomatoes";
     }
 }

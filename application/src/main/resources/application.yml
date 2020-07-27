@@ -1,3 +1,6 @@
+server:
+  port: 8090
+
 spring:
   sbp:
     runtime-mode: development

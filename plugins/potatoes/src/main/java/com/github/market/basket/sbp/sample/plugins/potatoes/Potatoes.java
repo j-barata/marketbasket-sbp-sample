@@ -21,11 +21,11 @@
  */
 package com.github.market.basket.sbp.sample.plugins.potatoes;
 
-import com.github.market.basket.sbp.sample.api.extension.PluginRegister;
+import com.github.market.basket.sbp.sample.api.IVegetable;
 import org.pf4j.Extension;
 
 @Extension
-public class PotatoesPluginRegister implements PluginRegister {
+public class Potatoes implements IVegetable {
 
     @Override
     public String name() {

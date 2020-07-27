@@ -24,6 +24,8 @@ package com.github.market.basket.sbp.sample.plugins.tomatoes;
 import org.laxture.sbp.SpringBootPlugin;
 import org.laxture.sbp.spring.boot.SpringBootstrap;
 import org.pf4j.PluginWrapper;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class TomatoesPlugin extends SpringBootPlugin {
 
@@ -44,5 +46,12 @@ public class TomatoesPlugin extends SpringBootPlugin {
     @Override
     public void stop() {
         super.stop();
+    }
+
+    @SpringBootApplication
+    static class TomatoesPluginStarter {
+        public static void main(String[] args) {
+            SpringApplication.run(TomatoesPluginStarter.class, args);
+        }
     }
 }

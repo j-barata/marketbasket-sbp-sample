@@ -21,6 +21,7 @@
  */
 package com.github.market.basket.sbp.sample.api;
 
-public interface IVegetable {
-    String getName();
+import com.github.market.basket.sbp.sample.api.extension.PluginRegister;
+
+public interface IVegetable extends PluginRegister {
 }

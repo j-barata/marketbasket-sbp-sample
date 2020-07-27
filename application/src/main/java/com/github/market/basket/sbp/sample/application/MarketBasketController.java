@@ -21,6 +21,7 @@
  */
 package com.github.market.basket.sbp.sample.application;
 
+import com.github.market.basket.sbp.sample.api.extension.PluginRegister;
 import org.pf4j.PluginManager;
 import org.pf4j.PluginWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +43,17 @@ public class MarketBasketController {
     @Autowired
     private ApplicationContext applicationContext;
 
-    @RequestMapping(value = "/list")
-    public List<String> list() {
+    @RequestMapping(value = "/id")
+    public List<String> id() {
         List<PluginWrapper> resolvedPlugins = pluginManager.getResolvedPlugins();
         return resolvedPlugins == null ? Collections.emptyList() :
                 resolvedPlugins.stream().map(PluginWrapper::getPluginId).collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/name")
+    public List<String> name() {
+        List<PluginRegister> registers = pluginManager.getExtensions(PluginRegister.class);
+        return registers == null ? Collections.emptyList() :
+                registers.stream().map(PluginRegister::name).collect(Collectors.toList());
     }
 }
