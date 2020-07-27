@@ -19,6 +19,7 @@
         <maven.compiler.fork>true</maven.compiler.fork>
         <maven.version>3.5.1</maven.version>
 
+        <spring.webmvc.version>5.2.7.RELEASE</spring.webmvc.version>
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
         <sbp.version>0.1.5</sbp.version>
     </properties>
