@@ -19,15 +19,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.plugins.tomatoes;
+package com.github.market.basket.sbp.sample.application;
 
 import com.github.market.basket.sbp.sample.api.IFruit;
-import org.pf4j.Extension;
+import com.github.market.basket.sbp.sample.api.IVegetable;
+import org.pf4j.PluginManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Extension
-public class TomatoesComponent implements IFruit {
+import java.util.List;
 
-    public String color() {
-        return "Red";
+@Configuration
+public class MarketBasketConfiguration {
+
+    @Autowired
+    private PluginManager pluginManager;
+
+    @Bean
+    public List<IFruit> fruitsComponent() {
+        return pluginManager.getExtensions(IFruit.class);
+    }
+
+    @Bean
+    public List<IVegetable> vegetablesComponent() {
+        return pluginManager.getExtensions(IVegetable.class);
     }
 }

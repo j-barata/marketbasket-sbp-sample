@@ -22,7 +22,9 @@
 package com.github.market.basket.sbp.sample.plugins.potatoes;
 
 import com.github.market.basket.sbp.sample.api.IVegetable;
+import org.pf4j.Extension;
 
+@Extension
 public class PotatoesComponent implements IVegetable {
 
     public String color() {

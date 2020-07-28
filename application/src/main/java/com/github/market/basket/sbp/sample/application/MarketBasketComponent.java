@@ -28,24 +28,21 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class MarketBasketComponent {
 
     @Autowired
-    private IFruit fruit;
-    //private List<IFruit> fruits;
+    private List<IFruit> fruits;
 
     @Autowired
-    private IVegetable vegetable;
-    //private List<IVegetable> vegetables;
+    private List<IVegetable> vegetables;
 
     public List<String> basket() {
         List<String> basket = new ArrayList();
-        //basket.addAll(fruits.stream().map(f -> f.type() + ':' + f.color()).collect(Collectors.toList()));
-        //basket.addAll(vegetables.stream().map(v -> v.type() + ':' + v.color()).collect(Collectors.toList()));
-        basket.add(fruit.type() + ':' + fruit.color());
-        basket.add(vegetable.type() + ':' + vegetable.color());
+        basket.addAll(fruits.stream().map(f -> f.type() + ':' + f.color()).collect(Collectors.toList()));
+        basket.addAll(vegetables.stream().map(v -> v.type() + ':' + v.color()).collect(Collectors.toList()));
         return basket;
     }
 }

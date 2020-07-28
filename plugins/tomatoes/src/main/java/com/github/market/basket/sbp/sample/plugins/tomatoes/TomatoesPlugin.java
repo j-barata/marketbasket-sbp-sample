@@ -21,14 +21,11 @@
  */
 package com.github.market.basket.sbp.sample.plugins.tomatoes;
 
-import com.github.market.basket.sbp.sample.api.IFruit;
 import org.laxture.sbp.SpringBootPlugin;
 import org.laxture.sbp.spring.boot.SpringBootstrap;
 import org.pf4j.PluginWrapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.annotation.Bean;
 
 public class TomatoesPlugin extends SpringBootPlugin {
 
@@ -41,8 +38,7 @@ public class TomatoesPlugin extends SpringBootPlugin {
 
     @Override
     protected SpringBootstrap createSpringBootstrap() {
-        return new SpringBootstrap(this, TomatoesPluginStarter.class)
-                .addSharedBeanName("fruitsComponent");
+        return new SpringBootstrap(this, TomatoesPluginStarter.class);
     }
 
     @Override
@@ -59,12 +55,6 @@ public class TomatoesPlugin extends SpringBootPlugin {
     static class TomatoesPluginStarter {
         public static void main(String[] args) {
             SpringApplication.run(TomatoesPluginStarter.class, args);
-        }
-
-        @Bean
-        @ConditionalOnMissingBean(name = "fruitsComponent")
-        public IFruit fruitsComponent() {
-            return new TomatoesComponent();
         }
     }
 }

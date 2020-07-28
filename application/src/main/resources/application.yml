@@ -4,6 +4,8 @@ server:
 spring:
   sbp:
     runtime-mode: development
+#    runtime-mode: deployment
+    plugins-root: plugins
     enabled: true
     classes-directories:
       - "target/classes"
