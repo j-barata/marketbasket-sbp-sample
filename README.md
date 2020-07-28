@@ -1,6 +1,6 @@
 ## Market Basket SBP Sample project
 
-A dummy project to test the [SBP](https://github.com/hank-cp/sbp) framework.
+A dummy project to test the [SBP](https://github.com/hank-cp/sbp) library.
 
 ### Content
 
@@ -23,11 +23,11 @@ The application should now be available from `http://localhost:8090`
 
 #### Use
 
-> List the plugins ids: GET `http://localhost:8090/plugins/id`
-> List the plugins names: GET `http://localhost:8090/plugins/list`
-> List the plugins resources: GET `http://localhost:8090/plugins/resources`
-> Call the `potatoes` specific controller: GET `http://localhost:8090/potatoes/name`
-> Call the `tomatoes` specific controller: GET `http://localhost:8090/tomatoes/name`
+* List the plugins ids: GET `http://localhost:8090/plugins/id`
+* List the plugins names: GET `http://localhost:8090/plugins/list`
+* List the plugins resources: GET `http://localhost:8090/plugins/resources`
+* Call the `potatoes` specific controller: GET `http://localhost:8090/potatoes/name`
+* Call the `tomatoes` specific controller: GET `http://localhost:8090/tomatoes/name`
 
 ### Useful links
 
