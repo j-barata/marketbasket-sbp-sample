@@ -21,7 +21,7 @@
  */
 package com.github.market.basket.sbp.sample.plugins.potatoes;
 
-import com.github.market.basket.sbp.sample.api.IVegetable;
+import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
 import org.pf4j.Extension;
 import org.pf4j.PluginWrapper;
 
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Extension
-public class Potatoes implements IVegetable {
+public class Potatoes implements IPluginRegister {
 
     @Override
     public String name() {

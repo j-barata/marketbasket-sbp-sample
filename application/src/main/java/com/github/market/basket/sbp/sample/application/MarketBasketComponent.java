@@ -19,16 +19,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.api.extension;
+package com.github.market.basket.sbp.sample.application;
 
-import org.pf4j.ExtensionPoint;
+import com.github.market.basket.sbp.sample.api.IFruit;
+import com.github.market.basket.sbp.sample.api.IVegetable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
-public interface PluginRegister extends ExtensionPoint {
+@Component
+public class MarketBasketComponent {
 
-    String name();
+    @Autowired
+    private IFruit fruit;
+    //private List<IFruit> fruits;
 
-    List<URL> resources();
+    @Autowired
+    private IVegetable vegetable;
+    //private List<IVegetable> vegetables;
+
+    public List<String> basket() {
+        List<String> basket = new ArrayList();
+        //basket.addAll(fruits.stream().map(f -> f.type() + ':' + f.color()).collect(Collectors.toList()));
+        //basket.addAll(vegetables.stream().map(v -> v.type() + ':' + v.color()).collect(Collectors.toList()));
+        basket.add(fruit.type() + ':' + fruit.color());
+        basket.add(vegetable.type() + ':' + vegetable.color());
+        return basket;
+    }
 }

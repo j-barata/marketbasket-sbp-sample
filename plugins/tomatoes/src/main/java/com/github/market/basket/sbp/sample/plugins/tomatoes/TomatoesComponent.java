@@ -21,34 +21,11 @@
  */
 package com.github.market.basket.sbp.sample.plugins.tomatoes;
 
-import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
-import org.pf4j.Extension;
-import org.pf4j.PluginWrapper;
+import com.github.market.basket.sbp.sample.api.IFruit;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+public class TomatoesComponent implements IFruit {
 
-@Extension
-public class Tomatoes implements IPluginRegister {
-
-    @Override
-    public String name() {
-        return "tomatoes";
-    }
-
-    @Override
-    public List<URL> resources() {
-        List<URL> resources = new ArrayList<>();
-        try {
-            PluginWrapper wrapper = TomatoesPlugin.INSTANCE.getWrapper();
-            URL images = wrapper.getPluginClassLoader().getResource("images");
-            for (String file : new File(images.getPath()).list()) {
-                resources.add(new File(images.getPath().concat(File.separator + file)).toURI().toURL());
-            }
-        } finally {
-            return resources;
-        }
+    public String color() {
+        return "Red";
     }
 }

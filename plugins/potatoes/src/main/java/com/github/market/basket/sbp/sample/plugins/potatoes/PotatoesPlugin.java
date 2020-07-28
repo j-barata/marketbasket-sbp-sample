@@ -21,11 +21,15 @@
  */
 package com.github.market.basket.sbp.sample.plugins.potatoes;
 
+import com.github.market.basket.sbp.sample.api.IFruit;
+import com.github.market.basket.sbp.sample.api.IVegetable;
 import org.laxture.sbp.SpringBootPlugin;
 import org.laxture.sbp.spring.boot.SpringBootstrap;
 import org.pf4j.PluginWrapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.annotation.Bean;
 
 public class PotatoesPlugin extends SpringBootPlugin {
 
@@ -38,7 +42,8 @@ public class PotatoesPlugin extends SpringBootPlugin {
 
     @Override
     protected SpringBootstrap createSpringBootstrap() {
-        return new SpringBootstrap(this, PotatoesPluginStarter.class);
+        return new SpringBootstrap(this, PotatoesPluginStarter.class)
+                .addSharedBeanName("vegetablesComponent");
     }
 
     @Override
@@ -55,6 +60,12 @@ public class PotatoesPlugin extends SpringBootPlugin {
     static class PotatoesPluginStarter {
         public static void main(String[] args) {
             SpringApplication.run(PotatoesPluginStarter.class, args);
+        }
+
+        @Bean
+        @ConditionalOnMissingBean(name = "vegetablesComponent")
+        public IVegetable vegetablesComponent() {
+            return new PotatoesComponent();
         }
     }
 }

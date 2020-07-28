@@ -21,7 +21,11 @@
  */
 package com.github.market.basket.sbp.sample.api;
 
-import com.github.market.basket.sbp.sample.api.extension.PluginRegister;
+public interface IVegetable {
 
-public interface IVegetable extends PluginRegister {
+    default String type() {
+        return "Vegetable";
+    }
+
+    String color();
 }

@@ -21,7 +21,7 @@
  */
 package com.github.market.basket.sbp.sample.application;
 
-import com.github.market.basket.sbp.sample.api.extension.PluginRegister;
+import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
 import org.pf4j.PluginManager;
 import org.pf4j.PluginWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +44,9 @@ public class MarketBasketController {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private MarketBasketComponent marketBasketComponent;
+
     @RequestMapping(value = "/id")
     public List<String> id() {
         List<PluginWrapper> resolvedPlugins = pluginManager.getResolvedPlugins();
@@ -53,15 +56,20 @@ public class MarketBasketController {
 
     @RequestMapping(value = "/name")
     public List<String> name() {
-        List<PluginRegister> registers = pluginManager.getExtensions(PluginRegister.class);
+        List<IPluginRegister> registers = pluginManager.getExtensions(IPluginRegister.class);
         return registers == null ? Collections.emptyList() :
-                registers.stream().map(PluginRegister::name).collect(Collectors.toList());
+                registers.stream().map(IPluginRegister::name).collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/resources")
     public List<URL> resources() {
-        List<PluginRegister> registers = pluginManager.getExtensions(PluginRegister.class);
+        List<IPluginRegister> registers = pluginManager.getExtensions(IPluginRegister.class);
         return registers == null ? Collections.emptyList() :
-                registers.stream().map(PluginRegister::resources).flatMap(List::stream).collect(Collectors.toList());
+                registers.stream().map(IPluginRegister::resources).flatMap(List::stream).collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/basket")
+    public List<String> basket() {
+        return marketBasketComponent.basket();
     }
 }

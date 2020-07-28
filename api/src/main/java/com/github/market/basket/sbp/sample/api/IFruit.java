@@ -21,7 +21,11 @@
  */
 package com.github.market.basket.sbp.sample.api;
 
-import com.github.market.basket.sbp.sample.api.extension.PluginRegister;
+public interface IFruit {
 
-public interface IFruit extends PluginRegister {
+    default String type() {
+        return "Fruit";
+    }
+
+    String color();
 }
