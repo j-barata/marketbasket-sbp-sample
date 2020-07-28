@@ -22,12 +22,10 @@
 package com.github.market.basket.sbp.sample.plugins.tomatoes;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@EnableWebMvc
 public class TomatoesImageProvider implements WebMvcConfigurer {
 
     @Override

@@ -29,6 +29,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,5 +56,12 @@ public class MarketBasketController {
         List<PluginRegister> registers = pluginManager.getExtensions(PluginRegister.class);
         return registers == null ? Collections.emptyList() :
                 registers.stream().map(PluginRegister::name).collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/resources")
+    public List<URL> resources() {
+        List<PluginRegister> registers = pluginManager.getExtensions(PluginRegister.class);
+        return registers == null ? Collections.emptyList() :
+                registers.stream().map(PluginRegister::resources).flatMap(List::stream).collect(Collectors.toList());
     }
 }

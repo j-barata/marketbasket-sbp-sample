@@ -29,8 +29,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class TomatoesPlugin extends SpringBootPlugin {
 
+    public static TomatoesPlugin INSTANCE;
+
     public TomatoesPlugin(PluginWrapper wrapper) {
         super(wrapper);
+        INSTANCE = this;
     }
 
     @Override

@@ -19,36 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.plugins.potatoes;
+package com.github.market.basket.sbp.sample.application;
 
-import com.github.market.basket.sbp.sample.api.IVegetable;
-import org.pf4j.Extension;
-import org.pf4j.PluginWrapper;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-@Extension
-public class Potatoes implements IVegetable {
+@Configuration
+//@EnableWebMvc
+public class MarketBasketImageProvider implements WebMvcConfigurer {
 
     @Override
-    public String name() {
-        return "potatoes";
-    }
-
-    @Override
-    public List<URL> resources() {
-        List<URL> resources = new ArrayList<>();
-        try {
-            PluginWrapper wrapper = PotatoesPlugin.INSTANCE.getWrapper();
-            URL images = wrapper.getPluginClassLoader().getResource("images");
-            for (String file : new File(images.getPath()).list()) {
-                resources.add(new File(images.getPath().concat(File.separator + file)).toURI().toURL());
-            }
-        } finally {
-            return resources;
-        }
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry
+          .addResourceHandler("/images/*")
+          .addResourceLocations("classpath:/images/");
     }
 }

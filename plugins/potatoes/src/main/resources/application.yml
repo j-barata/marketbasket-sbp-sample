@@ -1,0 +1,3 @@
+sbp-plugin:
+  plugin-only-resources:
+    - images

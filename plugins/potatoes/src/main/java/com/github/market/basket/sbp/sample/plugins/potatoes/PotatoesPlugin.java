@@ -29,8 +29,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class PotatoesPlugin extends SpringBootPlugin {
 
+    public static PotatoesPlugin INSTANCE;
+
     public PotatoesPlugin(PluginWrapper wrapper) {
         super(wrapper);
+        INSTANCE = this;
     }
 
     @Override

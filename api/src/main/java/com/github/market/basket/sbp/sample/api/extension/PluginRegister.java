@@ -23,7 +23,12 @@ package com.github.market.basket.sbp.sample.api.extension;
 
 import org.pf4j.ExtensionPoint;
 
+import java.net.URL;
+import java.util.List;
+
 public interface PluginRegister extends ExtensionPoint {
 
     String name();
+
+    List<URL> resources();
 }
