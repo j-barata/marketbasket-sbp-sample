@@ -19,9 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.plugins.tomatoes;
+package com.github.market.basket.sbp.sample.plugins.pears;
 
-import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
+import com.github.market.basket.sbp.sample.api.IFruit;
 import org.pf4j.Extension;
 import org.pf4j.PluginWrapper;
 
@@ -31,18 +31,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Extension
-public class Tomatoes implements IPluginRegister {
+public class PearsExtension implements IFruit {
 
     @Override
     public String name() {
-        return "tomatoes";
+        return "Pears";
+    }
+
+    @Override
+    public String color() {
+        return "Green";
     }
 
     @Override
     public List<URL> resources() {
         List<URL> resources = new ArrayList<>();
         try {
-            PluginWrapper wrapper = TomatoesPlugin.INSTANCE.getWrapper();
+            PluginWrapper wrapper = PearsPlugin.INSTANCE.getWrapper();
             URL images = wrapper.getPluginClassLoader().getResource("images");
             for (String file : new File(images.getPath()).list()) {
                 resources.add(new File(images.getPath().concat(File.separator + file)).toURI().toURL());

@@ -12,12 +12,12 @@
     </parent>
 
     <groupId>com.github</groupId>
-    <artifactId>market.basket.sbp.sample.plugins.tomatoes</artifactId>
+    <artifactId>market.basket.sbp.sample.plugins.pears</artifactId>
     <packaging>jar</packaging>
 
     <properties>
-        <plugin.id>com.github.market.basket.sbp.sample.plugins.tomatoes</plugin.id>
-        <plugin.class>com.github.market.basket.sbp.sample.plugins.tomatoes.TomatoesPlugin</plugin.class>
+        <plugin.id>com.github.market.basket.sbp.sample.plugins.pears</plugin.id>
+        <plugin.class>com.github.market.basket.sbp.sample.plugins.pears.PearsPlugin</plugin.class>
         <plugin.version>1.0.0-SNAPSHOT</plugin.version>
         <plugin.provider>marketbasket-sbp-sample</plugin.provider>
         <plugin.dependencies />

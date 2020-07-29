@@ -19,15 +19,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.plugins.tomatoes;
+package com.github.market.basket.sbp.sample.plugins.pears;
 
-import com.github.market.basket.sbp.sample.api.IFruit;
-import org.pf4j.Extension;
+import org.laxture.sbp.SpringBootPlugin;
+import org.laxture.sbp.spring.boot.SpringBootstrap;
+import org.pf4j.PluginWrapper;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@Extension
-public class TomatoesComponent implements IFruit {
+public class PearsPlugin extends SpringBootPlugin {
 
-    public String color() {
-        return "Red";
+    public static PearsPlugin INSTANCE;
+
+    public PearsPlugin(PluginWrapper wrapper) {
+        super(wrapper);
+        INSTANCE = this;
+    }
+
+    @Override
+    protected SpringBootstrap createSpringBootstrap() {
+        return new SpringBootstrap(this, PearsPluginStarter.class);
+    }
+
+    @Override
+    public void start() {
+        super.start();
+    }
+
+    @Override
+    public void stop() {
+        super.stop();
+    }
+
+    @SpringBootApplication
+    static class PearsPluginStarter {
+        public static void main(String[] args) {
+            SpringApplication.run(PearsPluginStarter.class, args);
+        }
     }
 }

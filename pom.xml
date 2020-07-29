@@ -19,9 +19,8 @@
         <maven.compiler.fork>true</maven.compiler.fork>
         <maven.version>3.5.1</maven.version>
 
-        <spring.webmvc.version>5.2.7.RELEASE</spring.webmvc.version>
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
-        <sbp.version>0.1.5</sbp.version>
+        <sbp.version>0.1.6</sbp.version>
     </properties>
 
     <modules>
@@ -42,4 +41,18 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>releases-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/releases</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>snapshots-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
 </project>

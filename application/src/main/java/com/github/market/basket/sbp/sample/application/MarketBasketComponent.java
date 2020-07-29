@@ -41,8 +41,8 @@ public class MarketBasketComponent {
 
     public List<String> basket() {
         List<String> basket = new ArrayList();
-        basket.addAll(fruits.stream().map(f -> f.type() + ':' + f.color()).collect(Collectors.toList()));
-        basket.addAll(vegetables.stream().map(v -> v.type() + ':' + v.color()).collect(Collectors.toList()));
+        basket.addAll(fruits.stream().map(f -> f.type() + ':' + f.name() + ':' + f.color()).collect(Collectors.toList()));
+        basket.addAll(vegetables.stream().map(v -> v.type() + ':' + v.name() + ':' + v.color()).collect(Collectors.toList()));
         return basket;
     }
 }

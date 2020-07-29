@@ -19,36 +19,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.plugins.potatoes;
+package com.github.market.basket.sbp.sample.plugins.pears;
 
-import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
-import org.pf4j.Extension;
-import org.pf4j.PluginWrapper;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+@RestController
+@RequestMapping(value = "/pears")
+public class PearsController {
 
-@Extension
-public class Potatoes implements IPluginRegister {
-
-    @Override
+    @RequestMapping(value = "/name")
     public String name() {
-        return "potatoes";
-    }
-
-    @Override
-    public List<URL> resources() {
-        List<URL> resources = new ArrayList<>();
-        try {
-            PluginWrapper wrapper = PotatoesPlugin.INSTANCE.getWrapper();
-            URL images = wrapper.getPluginClassLoader().getResource("images");
-            for (String file : new File(images.getPath()).list()) {
-                resources.add(new File(images.getPath().concat(File.separator + file)).toURI().toURL());
-            }
-        } finally {
-            return resources;
-        }
+        return "Pyrus communis";
     }
 }

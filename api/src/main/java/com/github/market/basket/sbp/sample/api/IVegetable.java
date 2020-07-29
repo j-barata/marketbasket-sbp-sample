@@ -21,9 +21,9 @@
  */
 package com.github.market.basket.sbp.sample.api;
 
-import org.pf4j.ExtensionPoint;
+import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
 
-public interface IVegetable extends ExtensionPoint {
+public interface IVegetable extends IPluginRegister {
 
     default String type() {
         return "Vegetable";

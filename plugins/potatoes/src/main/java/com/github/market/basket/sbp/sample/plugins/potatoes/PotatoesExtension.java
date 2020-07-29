@@ -19,19 +19,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.plugins.tomatoes;
+package com.github.market.basket.sbp.sample.plugins.potatoes;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import com.github.market.basket.sbp.sample.api.IVegetable;
+import org.pf4j.Extension;
+import org.pf4j.PluginWrapper;
 
-@Configuration
-public class TomatoesImageProvider implements WebMvcConfigurer {
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+@Extension
+public class PotatoesExtension implements IVegetable {
 
     @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry
-          .addResourceHandler("/tomatoes/*")
-          .addResourceLocations("classpath:/images/");
+    public String name() {
+        return "Potatoes";
+    }
+
+    @Override
+    public String color() {
+        return "Brown";
+    }
+
+    @Override
+    public List<URL> resources() {
+        List<URL> resources = new ArrayList<>();
+        try {
+            PluginWrapper wrapper = PotatoesPlugin.INSTANCE.getWrapper();
+            URL images = wrapper.getPluginClassLoader().getResource("images");
+            for (String file : new File(images.getPath()).list()) {
+                resources.add(new File(images.getPath().concat(File.separator + file)).toURI().toURL());
+            }
+        } finally {
+            return resources;
+        }
     }
 }

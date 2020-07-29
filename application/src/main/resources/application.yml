@@ -2,6 +2,16 @@ server:
   port: 8090
 
 spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /images/**
+  resources:
+    add-mappings: true
+    cache:
+      period: 3600
+  http:
+    encoding:
+      force: true
   sbp:
     runtime-mode: development
 #    runtime-mode: deployment
@@ -9,3 +19,5 @@ spring:
     enabled: true
     classes-directories:
       - "target/classes"
+    controller:
+      base-path: "/sbp/admin"

@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>pears</module>
         <module>potatoes</module>
         <module>tomatoes</module>
     </modules>

@@ -21,9 +21,9 @@
  */
 package com.github.market.basket.sbp.sample.api;
 
-import org.pf4j.ExtensionPoint;
+import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
 
-public interface IFruit extends ExtensionPoint {
+public interface IFruit extends IPluginRegister {
 
     default String type() {
         return "Fruit";
