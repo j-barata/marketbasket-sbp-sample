@@ -24,6 +24,7 @@ package com.github.market.basket.sbp.sample.application;
 import com.github.market.basket.sbp.sample.api.IFruit;
 import com.github.market.basket.sbp.sample.api.IVegetable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -33,9 +34,11 @@ import java.util.stream.Collectors;
 @Component
 public class MarketBasketComponent {
 
+    @Lazy
     @Autowired
     private List<IFruit> fruits;
 
+    @Lazy
     @Autowired
     private List<IVegetable> vegetables;
 

@@ -20,7 +20,7 @@
         <maven.version>3.5.1</maven.version>
 
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
-        <sbp.version>0.1.6</sbp.version>
+        <sbp.version>0.1.7</sbp.version>
     </properties>
 
     <modules>

@@ -27,12 +27,14 @@ import org.pf4j.PluginManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.List;
 
 @Configuration
 public class MarketBasketConfiguration {
 
+    @Lazy
     @Autowired
     private PluginManager pluginManager;
 

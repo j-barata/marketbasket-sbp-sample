@@ -48,7 +48,7 @@ public class PotatoesExtension implements IVegetable {
         List<URL> resources = new ArrayList<>();
         try {
             PluginWrapper wrapper = PotatoesPlugin.INSTANCE.getWrapper();
-            URL images = wrapper.getPluginClassLoader().getResource("images");
+            URL images = wrapper.getPluginClassLoader().getResource("public/potatoes");
             for (String file : new File(images.getPath()).list()) {
                 resources.add(new File(images.getPath().concat(File.separator + file)).toURI().toURL());
             }

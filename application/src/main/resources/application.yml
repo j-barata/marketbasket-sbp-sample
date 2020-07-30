@@ -3,15 +3,11 @@ server:
 
 spring:
   mvc:
-    throw-exception-if-no-handler-found: true
-    static-path-pattern: /images/**
+    static-path-pattern: /public/**
   resources:
     add-mappings: true
     cache:
       period: 3600
-  http:
-    encoding:
-      force: true
   sbp:
     runtime-mode: development
 #    runtime-mode: deployment
