@@ -1,0 +1,11 @@
+[
+  {
+    "id": "localhost",
+    "url": "http://localhost:8091/",
+    "pluginsJsonFileName": "plugins.json"
+  },
+  {
+    "id": "filesystem",
+    "url": "file:/some/probably/not/existing/path/plugins-repository"
+  }
+]

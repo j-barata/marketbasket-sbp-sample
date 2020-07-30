@@ -7,12 +7,12 @@
 
     <parent>
         <groupId>com.github</groupId>
-        <artifactId>market.basket.sbp.sample</artifactId>
+        <artifactId>market.basket.sbp.sample.update</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.github</groupId>
-    <artifactId>market.basket.sbp.sample.application</artifactId>
+    <artifactId>market.basket.sbp.sample.update.manager</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -27,19 +27,14 @@
             <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.laxture</groupId>
-            <artifactId>sbp-spring-boot-starter</artifactId>
-            <version>${sbp.version}</version>
+            <groupId>org.pf4j</groupId>
+            <artifactId>pf4j-update</artifactId>
+            <version>${pf4j.update.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github</groupId>
-            <artifactId>market.basket.sbp.sample.api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github</groupId>
-            <artifactId>market.basket.sbp.sample.update.manager</artifactId>
-            <version>${project.version}</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
     </dependencies>
 
@@ -57,7 +52,7 @@
                         <configuration>
                             <classifier>standalone</classifier>
                             <mainClass>
-                                com.github.market.basket.sbp.sample.application.MarketBasketApplication
+                                com.github.market.basket.sbp.sample.update.MarketBasketUpdate
                             </mainClass>
                         </configuration>
                     </execution>
