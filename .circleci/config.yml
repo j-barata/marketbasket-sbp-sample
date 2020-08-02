@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    
+    working_directory: ~/marketbasket-sbp-sample
+
+    docker:
+      - image: circleci/openjdk:11-jdk-stretch
+
+    steps:
+
+      - checkout
+      
+      - run: mvn clean package
