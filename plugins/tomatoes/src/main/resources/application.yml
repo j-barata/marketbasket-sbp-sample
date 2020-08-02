@@ -1,6 +1,6 @@
 spring:
   mvc:
-    static-path-pattern: /public/**
+    static-path-pattern: /**
   resources:
     add-mappings: true
     cache:

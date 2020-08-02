@@ -29,6 +29,7 @@
     <modules>
         <module>api</module>
         <module>application</module>
+        <module>frontend</module>
         <module>plugins</module>
         <module>update</module>
     </modules>

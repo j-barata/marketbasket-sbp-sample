@@ -27,17 +27,23 @@ The application should now be available from `http://localhost:8090`
 
 #### Use
 
+##### Through the Restful services
+
 * List the plugins ids: GET `http://localhost:8090/plugins/id`
 * List the plugins names: GET `http://localhost:8090/plugins/list`
 * List the plugins resources: GET `http://localhost:8090/plugins/resources`
 * List the plugins content: GET `http://localhost:8090/plugins/basket`
-* Get the application specific resource: GET `http://localhost:8090/public/logo.png`
+* Get the application specific resource: GET `http://localhost:8090/logo.png`
 * Call the `pears` specific controller: GET `http://localhost:8090/pears/name`
-* Get the `pears` specific resource: GET `http://localhost:8090/public/pears/pear.png`
+* Get the `pears` specific resource: GET `http://localhost:8090/pears/pear.png`
 * Call the `potatoes` specific controller: GET `http://localhost:8090/potatoes/name`
-* Get the `potatoes` specific resource: GET `http://localhost:8090/public/potatoes/potato.png`
+* Get the `potatoes` specific resource: GET `http://localhost:8090/potatoes/potato.png`
 * Call the `tomatoes` specific controller: GET `http://localhost:8090/tomatoes/name`
-* Get the `tomatoes` specific resource: GET `http://localhost:8090/public/tomatoes/tomato.png`
+* Get the `tomatoes` specific resource: GET `http://localhost:8090/tomatoes/tomato.png`
+
+##### Through the React application
+
+* The web UI is available at [http://localhost:8090](http://localhost:8090).
 
 ### Useful links
 

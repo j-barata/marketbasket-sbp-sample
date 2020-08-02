@@ -1,0 +1,54 @@
+{
+  "name": "marketbasket-sbp-sample-frontend",
+  "version": "1.0.0-SNAPSHOT",
+  "description": "Market Basket SBP Sample",
+  "author": "Joao Barata",
+  "license": "MIT",
+  "proxy": "http://localhost:8090",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "4.9.13",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "4.0.0-alpha.52",
+    "axios": "0.19.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "7.2.0",
+    "react-router-dom": "5.1.2",
+    "react-router-redux": "4.0.8",
+    "redux": "4.0.5",
+    "redux-form": "8.3.5",
+    "redux-localstorage": "0.4.0",
+    "redux-promise-middleware": "3.0.0",
+    "redux-thunk": "2.3.0"
+  },
+  "devDependencies": {
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "check": "depcheck .",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "engines": {
+    "node": ">= 8.9.4",
+    "npm": ">= 5.6.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
