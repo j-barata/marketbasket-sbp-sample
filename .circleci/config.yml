@@ -10,15 +10,5 @@ jobs:
     steps:
 
       - checkout
-
-      - restore_cache:
-          key: marketbasket-sbp-sample-{{ checksum "pom.xml" }}
       
-      - run: mvn dependency:go-offline
-      
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: marketbasket-sbp-sample-{{ checksum "pom.xml" }}
-      
-      - run: mvn package
+      - run: mvn clean package
