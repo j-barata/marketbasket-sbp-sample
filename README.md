@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/j-barata/marketbasket-sbp-sample.svg?style=shield)](https://circleci.com/gh/j-barata/marketbasket-sbp-sample)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=marketbasket-sbp-sample)](https://marketbasket-sbp-sample.herokuapp.com)
+
 ## Market Basket SBP Sample project
 
 A dummy project to test the [SBP](https://github.com/hank-cp/sbp) library.
