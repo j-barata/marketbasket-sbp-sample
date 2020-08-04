@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/j-barata/marketbasket-sbp-sample.svg?style=shield)](https://circleci.com/gh/j-barata/marketbasket-sbp-sample)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=marketbasket-sbp-sample)](https://marketbasket-sbp-sample.herokuapp.com)
+[![Heroku](https://pyheroku-badge.herokuapp.com/?app=marketbasket-sbp-sample&style=flat)](https://marketbasket-sbp-sample.herokuapp.com)
 ![GitHub](https://img.shields.io/github/license/j-barata/marketbasket-sbp-sample.svg?color=blue)
 
 ## Market Basket SBP Sample project
