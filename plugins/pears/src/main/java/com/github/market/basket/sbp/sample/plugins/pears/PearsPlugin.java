@@ -21,13 +21,14 @@
  */
 package com.github.market.basket.sbp.sample.plugins.pears;
 
+import com.github.market.basket.sbp.sample.api.plugin.ICustomPlugin;
 import org.laxture.sbp.SpringBootPlugin;
 import org.laxture.sbp.spring.boot.SpringBootstrap;
 import org.pf4j.PluginWrapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class PearsPlugin extends SpringBootPlugin {
+public class PearsPlugin extends SpringBootPlugin implements ICustomPlugin {
 
     public static PearsPlugin INSTANCE;
 
@@ -56,5 +57,15 @@ public class PearsPlugin extends SpringBootPlugin {
         public static void main(String[] args) {
             SpringApplication.run(PearsPluginStarter.class, args);
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Pears";
+    }
+
+    @Override
+    public String getLogo() {
+        return "/pears/pear.png";
     }
 }

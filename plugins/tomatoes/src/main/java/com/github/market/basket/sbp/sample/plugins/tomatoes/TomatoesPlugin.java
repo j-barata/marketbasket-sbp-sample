@@ -21,13 +21,14 @@
  */
 package com.github.market.basket.sbp.sample.plugins.tomatoes;
 
+import com.github.market.basket.sbp.sample.api.plugin.ICustomPlugin;
 import org.laxture.sbp.SpringBootPlugin;
 import org.laxture.sbp.spring.boot.SpringBootstrap;
 import org.pf4j.PluginWrapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class TomatoesPlugin extends SpringBootPlugin {
+public class TomatoesPlugin extends SpringBootPlugin implements ICustomPlugin {
 
     public static TomatoesPlugin INSTANCE;
 
@@ -56,5 +57,15 @@ public class TomatoesPlugin extends SpringBootPlugin {
         public static void main(String[] args) {
             SpringApplication.run(TomatoesPluginStarter.class, args);
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Tomatoes";
+    }
+
+    @Override
+    public String getLogo() {
+        return "/tomatoes/tomato.png";
     }
 }

@@ -21,17 +21,21 @@
  */
 package com.github.market.basket.sbp.sample.update.manager;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.pf4j.PluginManager;
+import org.pf4j.PluginState;
+import org.pf4j.PluginWrapper;
 import org.pf4j.update.PluginInfo;
 import org.pf4j.update.UpdateManager;
-import org.pf4j.update.UpdateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/updates")
@@ -41,17 +45,45 @@ public class MarketBasketUpdateController {
     @Autowired
     private UpdateManager updateManager;
 
+    @Lazy
+    @Autowired
+    private PluginManager pluginManager;
+
     @RequestMapping(value = "/repositories")
-    public List<String> repositories() {
-        List<UpdateRepository> repositories = updateManager.getRepositories();
-        return repositories == null ? Collections.emptyList() :
-                repositories.stream().map(repository -> repository.getId()).collect(Collectors.toList());
+    public ArrayNode repositories() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(updateManager.getRepositories(), ArrayNode.class);
     }
 
     @RequestMapping(value = "/available-plugins")
-    public List<String> availablePlugins() {
-        List<PluginInfo> availablePlugins = updateManager.getAvailablePlugins();
-        return availablePlugins == null ? Collections.emptyList() :
-                availablePlugins.stream().map(plugin -> plugin.id + ':' + plugin.releases).collect(Collectors.toList());
+    public ArrayNode availablePlugins() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(updateManager.getAvailablePlugins(), ArrayNode.class);
+    }
+
+    @RequestMapping(value = "/plugins")
+    public ArrayNode plugins() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<PluginInfo> plugins = updateManager.getPlugins();
+
+        ArrayNode result = objectMapper.createArrayNode();
+        for (PluginInfo info : plugins) {
+            ObjectNode node = objectMapper.convertValue(info, ObjectNode.class);
+            PluginWrapper wrapper = pluginManager.getPlugin(info.id);
+            PluginState state = wrapper != null ? wrapper.getPluginState() : null;
+            node.put("state", state != null ? state.name() : "UNINSTALLED");
+            result.add(node);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/install/{id}/{version}")
+    public boolean installPlugin(@PathVariable("id") String id, @PathVariable("version") String version) {
+        return updateManager.installPlugin(id, version);
+    }
+
+    @RequestMapping(value = "/uninstall/{id}")
+    public boolean uninstallPlugin(@PathVariable("id") String id) {
+        return updateManager.uninstallPlugin(id);
     }
 }

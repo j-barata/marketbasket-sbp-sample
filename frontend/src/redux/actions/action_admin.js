@@ -19,33 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import React, { Component, Fragment } from 'react';
+import api from '../api';
+import { START_PLUGIN, STOP_PLUGIN } from '../const';
 
-class App extends Component {
-
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-        };
-    }
-
-    componentWillMount() {
-    }
-
-    componentWillUpdate() {
-    }
-
-    componentDidMount() {
-    }
-
-    componentDidUpdate() {
-    }
-
-    render() {
-        return <Fragment>
-            My App
-        </Fragment>
-    }
+export function startPlugin(pluginId) {
+  return {
+    type: START_PLUGIN,
+    payload: api.post('/sbp/admin/start/' + pluginId),
+    plugin: pluginId,
+    timestamp: Date.now()
+  };
 }
 
-export default App;
+export function stopPlugin(pluginId) {
+  return {
+    type: STOP_PLUGIN,
+    payload: api.post('/sbp/admin/stop/' + pluginId),
+    plugin: pluginId,
+    timestamp: Date.now()
+  };
+}

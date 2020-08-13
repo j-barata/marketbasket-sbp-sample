@@ -21,13 +21,14 @@
  */
 package com.github.market.basket.sbp.sample.plugins.potatoes;
 
+import com.github.market.basket.sbp.sample.api.plugin.ICustomPlugin;
 import org.laxture.sbp.SpringBootPlugin;
 import org.laxture.sbp.spring.boot.SpringBootstrap;
 import org.pf4j.PluginWrapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class PotatoesPlugin extends SpringBootPlugin {
+public class PotatoesPlugin extends SpringBootPlugin implements ICustomPlugin {
 
     public static PotatoesPlugin INSTANCE;
 
@@ -56,5 +57,15 @@ public class PotatoesPlugin extends SpringBootPlugin {
         public static void main(String[] args) {
             SpringApplication.run(PotatoesPluginStarter.class, args);
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Potatoes";
+    }
+
+    @Override
+    public String getLogo() {
+        return "/potatoes/potato.png";
     }
 }

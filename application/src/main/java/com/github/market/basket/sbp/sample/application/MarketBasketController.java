@@ -21,6 +21,9 @@
  */
 package com.github.market.basket.sbp.sample.application;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
 import org.pf4j.PluginManager;
 import org.pf4j.PluginWrapper;
@@ -71,5 +74,23 @@ public class MarketBasketController {
     @RequestMapping(value = "/basket")
     public List<String> basket() {
         return marketBasketComponent.basket();
+    }
+
+    @RequestMapping(value = "/resolved")
+    public ArrayNode resolvedPlugins() {
+        SimpleModule simpleModule = new SimpleModule();
+        simpleModule.addSerializer(PluginWrapper.class, new PluginWrapperSerializer());
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(simpleModule);
+        return objectMapper.convertValue(pluginManager.getResolvedPlugins(), ArrayNode.class);
+    }
+
+    @RequestMapping(value = "/all")
+    public ArrayNode allPlugins() {
+        SimpleModule simpleModule = new SimpleModule();
+        simpleModule.addSerializer(PluginWrapper.class, new PluginWrapperSerializer());
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(simpleModule);
+        return objectMapper.convertValue(pluginManager.getPlugins(), ArrayNode.class);
     }
 }
