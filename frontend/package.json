@@ -25,7 +25,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "REACT_APP_PORT=$PORT react-scripts build",
     "check": "depcheck .",
     "eject": "react-scripts eject",
     "start": "react-scripts start",

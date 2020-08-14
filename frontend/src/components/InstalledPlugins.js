@@ -40,6 +40,7 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete';
 import HighlightOffSharp from '@material-ui/icons/PowerOffOutlined';
 
+import * as API from '../redux/api';
 import { uninstallPlugin } from '../redux/actions/action_updates';
 import { startPlugin, stopPlugin } from '../redux/actions/action_admin';
 import { fetchResolvedPlugins } from '../redux/actions/action_plugins';
@@ -109,7 +110,7 @@ const InstalledPlugins = props => {
             >
               <ListItemAvatar>
                 {plugin.state !== 'STARTED' ? <HighlightOffSharp className={classes.stoppedImage} color="error" />
-                  : <img alt="plugin" className={classes.pluginImage} src={"http://localhost:8090" + plugin.logo} />}
+                  : <img alt="plugin" className={classes.pluginImage} src={API.API_BASEURL + plugin.logo} />}
               </ListItemAvatar>
               <ListItemText
                 primary={plugin.name}
