@@ -21,7 +21,7 @@
  */
 import axios from 'axios';
 
-export const API_PORT = process.env.PORT || process.env.REACT_APP_PORT || 8090;
+export const API_PORT = process.env.PORT || 8090;
 export const API_BASEURL = window.location.protocol + '//' + window.location.hostname + ':' + API_PORT;
 
 const instance = axios.create({
