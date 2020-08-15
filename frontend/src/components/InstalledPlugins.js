@@ -38,7 +38,8 @@ import {
 } from '@material-ui/core';
 
 import DeleteIcon from '@material-ui/icons/Delete';
-import HighlightOffSharp from '@material-ui/icons/PowerOffOutlined';
+import PowerOffOutlined from '@material-ui/icons/PowerOffOutlined';
+import PowerOutlined from '@material-ui/icons/PowerOutlined';
 
 import * as API from '../redux/api';
 import { uninstallPlugin } from '../redux/actions/action_updates';
@@ -52,11 +53,11 @@ const useStyles = makeStyles(() => ({
   content: {
     padding: 0
   },
-  pluginImage: {
+  customImage: {
     height: 48,
     width: 48
   },
-  stoppedImage: {
+  pluginImage: {
     height: 32,
     width: 32,
     marginLeft: '8px'
@@ -109,8 +110,8 @@ const InstalledPlugins = props => {
               key={plugin.descriptor.pluginId}
             >
               <ListItemAvatar>
-                {plugin.state !== 'STARTED' ? <HighlightOffSharp className={classes.stoppedImage} color="error" />
-                  : <img alt="plugin" className={classes.pluginImage} src={API.API_BASEURL + plugin.logo} />}
+                {plugin.state !== 'STARTED' ? <PowerOffOutlined className={classes.pluginImage} color="error" />
+                  : (plugin.logo ? <img alt="plugin" className={classes.customImage} src={API.API_BASEURL + plugin.logo} /> : <PowerOutlined className={classes.pluginImage} />)}
               </ListItemAvatar>
               <ListItemText
                 primary={plugin.name}

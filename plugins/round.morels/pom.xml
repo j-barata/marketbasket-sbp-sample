@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github</groupId>
+        <artifactId>market.basket.sbp.sample.plugins</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.github</groupId>
+    <artifactId>market.basket.sbp.sample.plugins.round.morels</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <plugin.id>com.github.market.basket.sbp.sample.plugins.round.morels</plugin.id>
+        <plugin.class>com.github.market.basket.sbp.sample.plugins.round.morels.RoundMorelsPlugin</plugin.class>
+        <plugin.version>1.0.0-SNAPSHOT</plugin.version>
+        <plugin.provider>marketbasket-sbp-sample</plugin.provider>
+        <plugin.dependencies>com.github.market.basket.sbp.sample.plugins.morels</plugin.dependencies>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github</groupId>
+            <artifactId>market.basket.sbp.sample.api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github</groupId>
+            <artifactId>market.basket.sbp.sample.plugins.morels</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Plugin-Id>${plugin.id}</Plugin-Id>
+                            <Plugin-Class>${plugin.class}</Plugin-Class>
+                            <Plugin-Version>${plugin.version}</Plugin-Version>
+                            <Plugin-Provider>${plugin.provider}</Plugin-Provider>
+                            <Plugin-Dependencies>${plugin.dependencies}</Plugin-Dependencies>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

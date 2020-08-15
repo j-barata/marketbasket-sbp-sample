@@ -19,38 +19,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.application;
+package com.github.market.basket.sbp.sample.plugins.mushrooms;
 
-import com.github.market.basket.sbp.sample.api.IFruit;
 import com.github.market.basket.sbp.sample.api.IMushroom;
-import com.github.market.basket.sbp.sample.api.IVegetable;
-import org.pf4j.PluginManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 
+import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 
-@Configuration
-public class MarketBasketConfiguration {
+public class MushroomsExtension implements IMushroom {
 
-    @Lazy
-    @Autowired
-    private PluginManager pluginManager;
-
-    @Bean
-    public List<IFruit> fruitsComponent() {
-        return pluginManager.getExtensions(IFruit.class);
+    @Override
+    public String name() {
+        return null;
     }
 
-    @Bean
-    public List<IVegetable> vegetablesComponent() {
-        return pluginManager.getExtensions(IVegetable.class);
+    @Override
+    public String color() {
+        return null;
     }
 
-    @Bean
-    public List<IMushroom> mushroomsComponent() {
-        return pluginManager.getExtensions(IMushroom.class);
+    @Override
+    public List<URL> resources() {
+        return Collections.emptyList();
     }
 }

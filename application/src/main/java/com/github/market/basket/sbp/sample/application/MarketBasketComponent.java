@@ -22,6 +22,7 @@
 package com.github.market.basket.sbp.sample.application;
 
 import com.github.market.basket.sbp.sample.api.IFruit;
+import com.github.market.basket.sbp.sample.api.IMushroom;
 import com.github.market.basket.sbp.sample.api.IVegetable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -40,12 +41,23 @@ public class MarketBasketComponent {
 
     @Lazy
     @Autowired
+    private List<IMushroom> mushrooms;
+
+    @Lazy
+    @Autowired
     private List<IVegetable> vegetables;
 
     public List<String> basket() {
         List<String> basket = new ArrayList();
-        basket.addAll(fruits.stream().map(f -> f.type() + ':' + f.name() + ':' + f.color()).collect(Collectors.toList()));
-        basket.addAll(vegetables.stream().map(v -> v.type() + ':' + v.name() + ':' + v.color()).collect(Collectors.toList()));
+        if (fruits != null) {
+            basket.addAll(fruits.stream().map(f -> f.type() + ':' + f.name() + ':' + f.color()).collect(Collectors.toList()));
+        }
+        if (mushrooms != null) {
+            basket.addAll(mushrooms.stream().map(m -> m.type() + ':' + m.name() + ':' + m.color()).collect(Collectors.toList()));
+        }
+        if (vegetables != null) {
+            basket.addAll(vegetables.stream().map(v -> v.type() + ':' + v.name() + ':' + v.color()).collect(Collectors.toList()));
+        }
         return basket;
     }
 }

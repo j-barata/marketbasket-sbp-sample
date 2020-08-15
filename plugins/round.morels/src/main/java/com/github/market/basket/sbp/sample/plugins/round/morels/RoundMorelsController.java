@@ -19,38 +19,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.application;
+package com.github.market.basket.sbp.sample.plugins.round.morels;
 
-import com.github.market.basket.sbp.sample.api.IFruit;
-import com.github.market.basket.sbp.sample.api.IMushroom;
-import com.github.market.basket.sbp.sample.api.IVegetable;
-import org.pf4j.PluginManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+@RestController
+@RequestMapping(value = "/round.morels")
+public class RoundMorelsController {
 
-@Configuration
-public class MarketBasketConfiguration {
-
-    @Lazy
-    @Autowired
-    private PluginManager pluginManager;
-
-    @Bean
-    public List<IFruit> fruitsComponent() {
-        return pluginManager.getExtensions(IFruit.class);
-    }
-
-    @Bean
-    public List<IVegetable> vegetablesComponent() {
-        return pluginManager.getExtensions(IVegetable.class);
-    }
-
-    @Bean
-    public List<IMushroom> mushroomsComponent() {
-        return pluginManager.getExtensions(IMushroom.class);
+    @RequestMapping(value = "/name")
+    public String name() {
+        return "Morchella rotunda";
     }
 }

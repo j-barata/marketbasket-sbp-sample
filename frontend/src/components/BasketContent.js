@@ -97,8 +97,9 @@ const BasketContent = props => {
             >
               {content && content.length} Item(s)
             </Typography>
-            {content && content.map(item => {
+            {content && content.map((item, index) => {
               return <Typography
+                key={index}
                 color="inherit"
                 variant="body1"
               >

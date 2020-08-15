@@ -19,39 +19,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.application;
+package com.github.market.basket.sbp.sample.plugins.conical.morels;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.github.market.basket.sbp.sample.api.plugin.ICustomPlugin;
+import org.laxture.sbp.SpringBootPlugin;
+import org.laxture.sbp.spring.boot.SpringBootstrap;
 import org.pf4j.PluginWrapper;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.IOException;
+public class ConicalMorelsPlugin extends SpringBootPlugin implements ICustomPlugin {
 
-public class PluginWrapperSerializer extends StdSerializer<PluginWrapper> {
+    public static ConicalMorelsPlugin INSTANCE;
 
-    public PluginWrapperSerializer() {
-        this(null);
-    }
-
-    public PluginWrapperSerializer(Class<PluginWrapper> pluginWrapperClass) {
-        super(pluginWrapperClass);
+    public ConicalMorelsPlugin(PluginWrapper wrapper) {
+        super(wrapper);
+        INSTANCE = this;
     }
 
     @Override
-    public void serialize(PluginWrapper pluginWrapper, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        jsonGenerator.writeStartObject();
-        jsonGenerator.writeObjectField("descriptor", pluginWrapper.getDescriptor());
-        jsonGenerator.writeStringField("state", pluginWrapper.getPluginState().toString());
-        String name = ((ICustomPlugin) pluginWrapper.getPlugin()).getName();
-        if (name != null) {
-            jsonGenerator.writeStringField("name", name);
+    protected SpringBootstrap createSpringBootstrap() {
+        return new SpringBootstrap(this, ConicalMorelsPluginStarter.class);
+    }
+
+    @Override
+    public void start() {
+        super.start();
+    }
+
+    @Override
+    public void stop() {
+        super.stop();
+    }
+
+    @SpringBootApplication
+    static class ConicalMorelsPluginStarter {
+        public static void main(String[] args) {
+            SpringApplication.run(ConicalMorelsPluginStarter.class, args);
         }
-        String logo = ((ICustomPlugin) pluginWrapper.getPlugin()).getLogo();
-        if (logo != null) {
-            jsonGenerator.writeStringField("logo", logo);
-        }
-        jsonGenerator.writeEndObject();
+    }
+
+    @Override
+    public String getName() {
+        return "Conical Morels";
+    }
+
+    @Override
+    public String getLogo() {
+        return "/conical.morels/conical.morel.png";
     }
 }

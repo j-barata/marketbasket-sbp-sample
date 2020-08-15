@@ -19,38 +19,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.github.market.basket.sbp.sample.application;
+package com.github.market.basket.sbp.sample.plugins.chanterelles;
 
-import com.github.market.basket.sbp.sample.api.IFruit;
-import com.github.market.basket.sbp.sample.api.IMushroom;
-import com.github.market.basket.sbp.sample.api.IVegetable;
-import org.pf4j.PluginManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
+import com.github.market.basket.sbp.sample.plugins.mushrooms.MushroomsExtension;
+import org.pf4j.Extension;
+import org.pf4j.PluginWrapper;
 
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
-public class MarketBasketConfiguration {
+@Extension
+public class ChanterellesExtension extends MushroomsExtension {
 
-    @Lazy
-    @Autowired
-    private PluginManager pluginManager;
-
-    @Bean
-    public List<IFruit> fruitsComponent() {
-        return pluginManager.getExtensions(IFruit.class);
+    @Override
+    public String name() {
+        return "Chanterelles";
     }
 
-    @Bean
-    public List<IVegetable> vegetablesComponent() {
-        return pluginManager.getExtensions(IVegetable.class);
+    @Override
+    public String color() {
+        return "Yellow";
     }
 
-    @Bean
-    public List<IMushroom> mushroomsComponent() {
-        return pluginManager.getExtensions(IMushroom.class);
+    @Override
+    public List<URL> resources() {
+        List<URL> resources = new ArrayList<>();
+        try {
+            PluginWrapper wrapper = ChanterellesPlugin.INSTANCE.getWrapper();
+            URL images = wrapper.getPluginClassLoader().getResource("public/chanterelles");
+            for (String file : new File(images.getPath()).list()) {
+                resources.add(new File(images.getPath().concat(File.separator + file)).toURI().toURL());
+            }
+        } finally {
+            return resources;
+        }
     }
 }

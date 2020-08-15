@@ -1,0 +1,7 @@
+spring:
+  mvc:
+    static-path-pattern: /**
+  resources:
+    add-mappings: true
+    cache:
+      period: 3600

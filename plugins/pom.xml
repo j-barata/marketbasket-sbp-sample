@@ -19,13 +19,19 @@
         <module>apples</module>
         <module>bananas</module>
         <module>carrots</module>
+        <module>ceps</module>
+        <module>chanterelles</module>
         <module>cherries</module>
+        <module>conical.morels</module>
         <module>leeks</module>
+        <module>morels</module>
+        <module>mushrooms</module>
         <module>onions</module>
         <module>oranges</module>
         <module>pears</module>
         <module>potatoes</module>
         <module>radishes</module>
+        <module>round.morels</module>
         <module>tomatoes</module>
         <module>zucchinis</module>
     </modules>

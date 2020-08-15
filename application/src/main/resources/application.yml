@@ -13,6 +13,7 @@ spring:
 #    runtime-mode: deployment
     plugins-root: plugins
     enabled: true
+    auto-start-plugin: false
     classes-directories:
       - "target/classes"
     controller:
