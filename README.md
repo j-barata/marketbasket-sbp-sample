@@ -13,6 +13,8 @@ This repository contains many Maven modules:
 * `market.basket.sbp.sample.application` which provides the main application.
 * `market.basket.sbp.sample.plugins.*` which provides a plugin embedding a set of specific features: controller, image resource.
 
+![Market Basket Plugins](doc/marketbasket-plugins.png)
+
 ### How to
 
 #### Build and Run
