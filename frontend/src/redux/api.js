@@ -21,8 +21,12 @@
  */
 import axios from 'axios';
 
-export const API_PORT = process.env.NODE_ENV === 'development' ? ':8090' : '';
-export const API_BASEURL = window.location.protocol + '//' + window.location.hostname + API_PORT;
+export const DEFAULT_PORT = '8090';
+export const HEROKU_SUFFIX = '.herokuapp.com';
+
+export const API_HOST = window.location.protocol + '//' + window.location.hostname;
+export const API_PORT = process.env.NODE_ENV === 'development' ? DEFAULT_PORT : API_HOST.endsWith(HEROKU_SUFFIX) ? undefined : DEFAULT_PORT;
+export const API_BASEURL = API_HOST + (API_PORT ? ':' + API_PORT : '');
 
 const instance = axios.create({
     baseURL: API_BASEURL
