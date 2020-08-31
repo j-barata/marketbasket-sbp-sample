@@ -87,7 +87,7 @@
                             <outputDirectory>${basedir}/target/classes/public</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${main.basedir}/frontend/build</directory>
+                                    <directory>${main.basedir}/frontend/app/build</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

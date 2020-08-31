@@ -7,23 +7,15 @@
 
     <parent>
         <groupId>com.github</groupId>
-        <artifactId>market.basket.sbp.sample</artifactId>
+        <artifactId>market.basket.sbp.sample.frontend</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.github</groupId>
-    <artifactId>market.basket.sbp.sample.frontend</artifactId>
+    <artifactId>market.basket.sbp.sample.frontend.plugins</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <npm.skip>false</npm.skip>
-        <node.version>v11.8.0</node.version>
-        <npm.version>6.5.0</npm.version>
-        <frontend.maven.version>1.6</frontend.maven.version>
-    </properties>
-
     <modules>
-        <module>app</module>
-        <module>plugins</module>
+        <module>apples</module>
     </modules>
 </project>
