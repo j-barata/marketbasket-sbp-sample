@@ -19,60 +19,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Grid } from '@material-ui/core';
+package com.github.market.basket.sbp.sample.plugins.apples;
 
-import BasketContent from './BasketContent';
-import AvailablePlugins from './AvailablePlugins';
-import InstalledPlugins from './InstalledPlugins';
+import com.github.market.basket.sbp.sample.api.IWidgetProvider;
+import org.pf4j.Extension;
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(4)
-  }
-}));
+import java.util.HashMap;
+import java.util.Map;
 
-const Dashboard = () => {
-  const classes = useStyles();
+@Extension
+public class ApplesWidgets implements IWidgetProvider {
 
-  return (
-    <div className={classes.root}>
-      <Grid
-        container
-        spacing={4}
-        alignItems="flex-start"
-      >
-        <Grid
-          item
-          lg={3}
-          sm={3}
-          xl={3}
-          xs={12}
-        >
-          <AvailablePlugins />
-        </Grid>
-        <Grid
-          item
-          lg={6}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          <InstalledPlugins />
-        </Grid>
-        <Grid
-          item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          <BasketContent />
-        </Grid>
-      </Grid>
-    </div>
-  );
-};
-
-export default Dashboard;
+    @Override
+    public Map<String, String> providedWidgets() {
+        return new HashMap<String, String>() {{ put("recipe", "/apples/js/ApplePie.js"); }};
+    }
+}

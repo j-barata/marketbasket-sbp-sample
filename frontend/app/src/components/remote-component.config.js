@@ -19,26 +19,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import api from '../api';
-import { FETCH_BASKET_CONTENT, FETCH_ALL_PLUGINS, FETCH_RESOLVED_PLUGINS } from '../const';
-
-export function fetchBasketContent() {
-  return {
-    type: FETCH_BASKET_CONTENT,
-    payload: api.get('/plugins/basket')
-  };
-}
-
-export function fetchAllPlugins() {
-  return {
-    type: FETCH_ALL_PLUGINS,
-    payload: api.get('/plugins/all')
-  };
-}
-
-export function fetchResolvedPlugins() {
-  return {
-    type: FETCH_RESOLVED_PLUGINS,
-    payload: api.get('/plugins/resolved')
-  };
-}
+export const resolve = {
+  react: require("react"),
+  ["@material-ui/core"]: require("@material-ui/core"),
+  ["@material-ui/icons"]: require("@material-ui/icons"),
+  ["@material-ui/core/styles"]: require("@material-ui/core/styles"),
+  ["@material-ui/core/Typography"]: require("@material-ui/core/Typography"),
+  ["@material-ui/core/Card"]: require("@material-ui/core/Card"),
+  ["@material-ui/core/CardActionArea"]: require("@material-ui/core/CardActionArea"),
+  ["@material-ui/core/CardContent"]: require("@material-ui/core/CardContent"),
+  ["@material-ui/core/CardMedia"]: require("@material-ui/core/CardMedia")
+};

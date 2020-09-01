@@ -10,6 +10,7 @@
     "@material-ui/core": "4.9.13",
     "@material-ui/icons": "4.9.1",
     "@material-ui/styles": "4.10.0",
+    "@paciolan/remote-component": "2.7.2",
     "axios": "0.19.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -25,7 +26,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "check": "depcheck .",
     "eject": "react-scripts eject",
     "start": "react-scripts start",

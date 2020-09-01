@@ -42,7 +42,7 @@
         </dependency>
         <dependency>
             <groupId>com.github</groupId>
-            <artifactId>market.basket.sbp.sample.frontend</artifactId>
+            <artifactId>market.basket.sbp.sample.frontend.app</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -87,7 +87,7 @@
                             <outputDirectory>${basedir}/target/classes/public</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${main.basedir}/frontend/build</directory>
+                                    <directory>${main.basedir}/frontend/app/build</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

@@ -16,6 +16,8 @@
     <packaging>jar</packaging>
 
     <properties>
+        <main.basedir>${project.parent.basedir}/..</main.basedir>
+
         <plugin.id>com.github.market.basket.sbp.sample.plugins.apples</plugin.id>
         <plugin.class>com.github.market.basket.sbp.sample.plugins.apples.ApplesPlugin</plugin.class>
         <plugin.version>1.0.0-SNAPSHOT</plugin.version>
@@ -39,6 +41,11 @@
             <artifactId>market.basket.sbp.sample.api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github</groupId>
+            <artifactId>market.basket.sbp.sample.frontend.plugins.apples</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -58,6 +65,29 @@
                         </manifestEntries>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/public/apples/js</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${main.basedir}/frontend/plugins/apples/build</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

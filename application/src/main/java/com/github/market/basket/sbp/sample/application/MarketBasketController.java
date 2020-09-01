@@ -24,17 +24,21 @@ package com.github.market.basket.sbp.sample.application;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.github.market.basket.sbp.sample.api.IWidgetProvider;
 import com.github.market.basket.sbp.sample.api.extension.IPluginRegister;
 import org.pf4j.PluginManager;
 import org.pf4j.PluginWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -49,6 +53,10 @@ public class MarketBasketController {
 
     @Autowired
     private MarketBasketComponent marketBasketComponent;
+
+    @Lazy
+    @Autowired
+    private List<IWidgetProvider> widgetProviders;
 
     @RequestMapping(value = "/id")
     public List<String> id() {
@@ -92,5 +100,18 @@ public class MarketBasketController {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(simpleModule);
         return objectMapper.convertValue(pluginManager.getPlugins(), ArrayNode.class);
+    }
+
+    @RequestMapping(value = "/widgets/{key}")
+    public List<String> widgets(@PathVariable(name="key") String key) {
+        List<IWidgetProvider> providers = pluginManager.getExtensions(IWidgetProvider.class);
+        if (providers != null) {
+            return providers.stream()
+                    .map(IWidgetProvider::providedWidgets)
+                    .map(p -> p.get(key))
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
+        }
+        return Collections.emptyList();
     }
 }
