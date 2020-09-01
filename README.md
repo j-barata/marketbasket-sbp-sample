@@ -10,7 +10,9 @@ A dummy project to test the [SBP](https://github.com/hank-cp/sbp) library.
 
 This repository contains many Maven modules:
 * `market.basket.sbp.sample.api` which provides a set of interfaces used by the application. Each plugin provides its own implementation of these interfaces.
-* `market.basket.sbp.sample.application` which provides the main application.
+* `market.basket.sbp.sample.application` which provides the spring boot application.
+* `market.basket.sbp.sample.frontend.app` which provides the react application.
+* `market.basket.sbp.sample.frontend.plugins.*` which provides several plugins embedding a set of js components.
 * `market.basket.sbp.sample.plugins.*` which provides several plugins embedding a set of specific features: controller, image resource.
 
 ![Market Basket Plugins](doc/marketbasket-plugins.png)
@@ -41,7 +43,8 @@ The application should now be available from `http://localhost:8090`
 
 ##### Through the React application
 
-* The web UI is available at [http://localhost:8090](http://localhost:8090).
+* The web UI is locally available at [http://localhost:8090](http://localhost:8090).
+* A demo is also available online on [Heroku](https://marketbasket-sbp-sample.herokuapp.com).
 
 ![Market Basket Screenshot](doc/marketbasket-screenshot.png)
 
