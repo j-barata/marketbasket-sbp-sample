@@ -78,10 +78,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target/classes/public/static/js/plugins/apples</outputDirectory>
+                            <outputDirectory>${basedir}/target/classes/public/apples/js</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${main.basedir}/frontend/plugins/apples/dist</directory>
+                                    <directory>${main.basedir}/frontend/plugins/apples/build</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

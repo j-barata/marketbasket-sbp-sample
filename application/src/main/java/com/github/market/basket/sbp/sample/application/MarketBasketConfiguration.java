@@ -24,6 +24,7 @@ package com.github.market.basket.sbp.sample.application;
 import com.github.market.basket.sbp.sample.api.IFruit;
 import com.github.market.basket.sbp.sample.api.IMushroom;
 import com.github.market.basket.sbp.sample.api.IVegetable;
+import com.github.market.basket.sbp.sample.api.IWidgetProvider;
 import org.pf4j.PluginManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -52,5 +53,10 @@ public class MarketBasketConfiguration {
     @Bean
     public List<IMushroom> mushroomsComponent() {
         return pluginManager.getExtensions(IMushroom.class);
+    }
+
+    @Bean
+    public List<IWidgetProvider> widgetProviders() {
+        return pluginManager.getExtensions(IWidgetProvider.class);
     }
 }

@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 import api from '../api';
-import { FETCH_BASKET_CONTENT, FETCH_ALL_PLUGINS, FETCH_RESOLVED_PLUGINS } from '../const';
+import { FETCH_BASKET_CONTENT, FETCH_ALL_PLUGINS, FETCH_RESOLVED_PLUGINS, FETCH_WIDGETS } from '../const';
 
 export function fetchBasketContent() {
   return {
@@ -40,5 +40,12 @@ export function fetchResolvedPlugins() {
   return {
     type: FETCH_RESOLVED_PLUGINS,
     payload: api.get('/plugins/resolved')
+  };
+}
+
+export function fetchWidgets(key) {
+  return {
+    type: FETCH_WIDGETS,
+    payload: api.get('/plugins/widgets/' + key)
   };
 }

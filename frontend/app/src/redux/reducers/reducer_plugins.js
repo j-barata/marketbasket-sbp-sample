@@ -19,9 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import { FETCH_BASKET_CONTENT, FETCH_ALL_PLUGINS, FETCH_RESOLVED_PLUGINS } from '../const';
+import { FETCH_BASKET_CONTENT, FETCH_ALL_PLUGINS, FETCH_RESOLVED_PLUGINS, FETCH_WIDGETS } from '../const';
 
-const INITIAL_STATE = { basketContent: [], allPlugins: [], resolvedPlugins: [] };
+const INITIAL_STATE = { basketContent: [], allPlugins: [], resolvedPlugins: [], widgets: [] };
 
 function setBasketContent(state, action) {
   const basketContent = action.payload.data;
@@ -38,6 +38,11 @@ function setResolvedPlugins(state, action) {
   return { ...state, resolvedPlugins };
 }
 
+function setWidgets(state, action) {
+  const widgets = action.payload.data;
+  return { ...state, widgets };
+}
+
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case `${FETCH_BASKET_CONTENT}_SUCCESS`:
@@ -51,6 +56,10 @@ export default function (state = INITIAL_STATE, action) {
     case `${FETCH_RESOLVED_PLUGINS}_SUCCESS`:
       return setResolvedPlugins(state, action);
     case `${FETCH_RESOLVED_PLUGINS}_ERROR`:
+      return INITIAL_STATE;
+    case `${FETCH_WIDGETS}_SUCCESS`:
+      return setWidgets(state, action);
+    case `${FETCH_WIDGETS}_ERROR`:
       return INITIAL_STATE;
     default:
       return state;

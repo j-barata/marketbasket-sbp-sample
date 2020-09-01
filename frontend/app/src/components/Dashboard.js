@@ -24,6 +24,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
 import BasketContent from './BasketContent';
+import Recipes from './Recipes';
 import AvailablePlugins from './AvailablePlugins';
 import InstalledPlugins from './InstalledPlugins';
 
@@ -38,37 +39,22 @@ const Dashboard = () => {
 
   return (
     <div className={classes.root}>
-      <Grid
-        container
-        spacing={4}
-        alignItems="flex-start"
-      >
-        <Grid
-          item
-          lg={3}
-          sm={3}
-          xl={3}
-          xs={12}
-        >
+      <Grid container spacing={2} alignItems="flex-start" >
+        <Grid item lg={3} sm={3} xl={3} xs={4} >
           <AvailablePlugins />
         </Grid>
-        <Grid
-          item
-          lg={6}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
+        <Grid item lg={4} sm={6} xl={3} xs={8} >
           <InstalledPlugins />
         </Grid>
-        <Grid
-          item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          <BasketContent />
+        <Grid item xs={4}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} >
+              <BasketContent />
+            </Grid>
+            <Grid item xs={12} >
+              <Recipes />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

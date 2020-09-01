@@ -19,15 +19,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-export const FETCH_BASKET_CONTENT = 'FETCH_BASKET_CONTENT';
-export const FETCH_ALL_PLUGINS = 'FETCH_ALL_PLUGINS';
-export const FETCH_RESOLVED_PLUGINS = 'FETCH_RESOLVED_PLUGINS';
-export const FETCH_WIDGETS = 'FETCH_WIDGETS';
+package com.github.market.basket.sbp.sample.plugins.mushrooms;
 
-export const START_PLUGIN = 'START_PLUGIN';
-export const STOP_PLUGIN = 'STOP_PLUGIN';
+import com.github.market.basket.sbp.sample.api.IWidgetProvider;
+import org.pf4j.Extension;
 
-export const FETCH_AVAILABLE_UPDATES_PLUGINS = 'FETCH_AVAILABLE_UPDATES_PLUGINS';
-export const FETCH_UPDATES_PLUGINS = 'FETCH_UPDATES_PLUGINS';
-export const INSTALL_PLUGIN = 'INSTALL_PLUGIN';
-export const UNINSTALL_PLUGIN = 'UNINSTALL_PLUGIN';
+import java.util.HashMap;
+import java.util.Map;
+
+@Extension
+public class MushroomsWidgets implements IWidgetProvider {
+
+    @Override
+    public Map<String, String> providedWidgets() {
+        return new HashMap<String, String>() {{ put("recipe", "/mushrooms/js/MushroomOmelette.js"); }};
+    }
+}

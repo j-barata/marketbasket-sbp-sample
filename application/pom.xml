@@ -42,7 +42,7 @@
         </dependency>
         <dependency>
             <groupId>com.github</groupId>
-            <artifactId>market.basket.sbp.sample.frontend</artifactId>
+            <artifactId>market.basket.sbp.sample.frontend.app</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

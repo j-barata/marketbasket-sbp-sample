@@ -17,5 +17,7 @@
 
     <modules>
         <module>apples</module>
+        <module>mushrooms</module>
+        <module>potatoes</module>
     </modules>
 </project>

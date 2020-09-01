@@ -1,0 +1,43 @@
+{
+    "name": "marketbasket-plugin-mushrooms",
+    "version": "1.0.0-SNAPSHOT",
+    "author": "Joao Barata",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/preset-react": "^7.9.4",
+        "@material-ui/core": "^4.6.1",
+        "babel-preset-es2015": "^6.24.1",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-intl": "^3.9.1"
+    },
+    "scripts": {
+        "build": "babel ./shared --out-dir build --extensions '.js'"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.0.0",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+        "@babel/preset-env": "^7.9.0",
+        "@babel/preset-typescript": "^7.9.0",
+        "@types/react": "^16.9.31",
+        "@types/react-dom": "^16.9.6",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-loader": "^8.1.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-minify": "^0.5.1",
+        "babel-preset-react": "^6.24.1",
+        "html-webpack-plugin": "^4.0.4",
+        "prettier": "^1.13.7",
+        "source-map-loader": "^0.2.4",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.10.3"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "all"
+    }
+}

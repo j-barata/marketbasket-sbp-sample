@@ -19,15 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-export const FETCH_BASKET_CONTENT = 'FETCH_BASKET_CONTENT';
-export const FETCH_ALL_PLUGINS = 'FETCH_ALL_PLUGINS';
-export const FETCH_RESOLVED_PLUGINS = 'FETCH_RESOLVED_PLUGINS';
-export const FETCH_WIDGETS = 'FETCH_WIDGETS';
+import { createRemoteComponent } from "@paciolan/remote-component/dist/lib/createRemoteComponent";
+import { createRequires } from "@paciolan/remote-component/dist/lib/createRequires";
+import { resolve } from "./remote-component.config.js";
 
-export const START_PLUGIN = 'START_PLUGIN';
-export const STOP_PLUGIN = 'STOP_PLUGIN';
-
-export const FETCH_AVAILABLE_UPDATES_PLUGINS = 'FETCH_AVAILABLE_UPDATES_PLUGINS';
-export const FETCH_UPDATES_PLUGINS = 'FETCH_UPDATES_PLUGINS';
-export const INSTALL_PLUGIN = 'INSTALL_PLUGIN';
-export const UNINSTALL_PLUGIN = 'UNINSTALL_PLUGIN';
+const requires = createRequires(resolve);
+export const RemoteComponent = createRemoteComponent({ requires });

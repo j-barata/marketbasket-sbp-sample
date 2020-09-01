@@ -59,13 +59,13 @@ const BasketContent = props => {
   const classes = useStyles();
 
   const [content, setContent] = useState(undefined);
-
+  
   const startedPlugin = useSelector(state => state.admin.startedPlugin);
   const stoppedPlugin = useSelector(state => state.admin.stoppedPlugin);
   const basketContent = useSelector(state => state.plugins.basketContent);
   const installedPlugin = useSelector(state => state.updates.installedPlugin);
   const uninstalledPlugin = useSelector(state => state.updates.uninstalledPlugin);
-
+  
   const dispatch = useDispatch();
 
   useEffect(() => { setContent(basketContent); }, [basketContent]);
