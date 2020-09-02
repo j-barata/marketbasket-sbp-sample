@@ -17,7 +17,12 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.fork>true</maven.compiler.fork>
-        <maven.version>3.5.1</maven.version>
+
+        <maven.antrun.plugin.version>3.0.0</maven.antrun.plugin.version>
+        <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
+        <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
 
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
         <sbp.version>0.1.7</sbp.version>
@@ -38,7 +43,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.version}</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

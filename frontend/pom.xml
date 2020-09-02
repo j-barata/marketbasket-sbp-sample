@@ -19,7 +19,7 @@
         <npm.skip>false</npm.skip>
         <node.version>v11.8.0</node.version>
         <npm.version>6.5.0</npm.version>
-        <frontend.maven.version>1.6</frontend.maven.version>
+        <frontend.maven.plugin.version>1.6</frontend.maven.plugin.version>
     </properties>
 
     <modules>

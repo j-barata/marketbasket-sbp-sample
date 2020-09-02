@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>${frontend.maven.version}</version>
+                <version>${frontend.maven.plugin.version}</version>
                 <configuration>
                     <workingDirectory>${project.basedir}</workingDirectory>
                     <installDirectory>${project.build.directory}</installDirectory>
@@ -59,21 +59,44 @@
             </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>${maven.antrun.plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <copy todir="${project.build.directory}/classes/public">
                                     <fileset dir="${project.basedir}/build"/>
                                 </copy>
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven.clean.plugin.version}</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>build</directory>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>node_modules</directory>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
             </plugin>
         </plugins>
     </build>
